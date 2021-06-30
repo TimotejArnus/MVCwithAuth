@@ -1,0 +1,78 @@
+﻿@using NapredniObrazec.DataBase
+@model NapredniObrazec.Models.Car
+@{
+    ViewData["Title"] = "previewCar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if(User.IsInRole("Admin")){
+<div>
+    <a class="text-dark btn btn-primary float-left" asp-controller="Car" asp-action="Add">Add Cars</a>
+    <a class="text-dark btn btn-danger float-right" asp-controller="Car" asp-action="DeleteAll">Delete Cars</a>
+</div>
+
+<hr />
+
+}
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Proizvajalec)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kilometri)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Registracija)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+        @using (Database db = new Database())
+        {
+            foreach (var item in db.Cars)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proizvajalec)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.kilometri)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Registracija)
+            </td>
+            
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id, db })|
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Show", new { id = item.Id })
+                    </td>
+                }
+                else if (User.IsInRole("User"))
+                {
+                    <td>
+                        @Html.ActionLink("Details", "Show", new { id = item.Id })
+                    </td>
+                }
+
+
+                
+            </tr>
+            }
+        }
+
+    </tbody>
+</table>

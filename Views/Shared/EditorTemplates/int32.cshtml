@@ -1,0 +1,27 @@
+﻿
+@model Int32
+
+
+<script type="text/javascript">
+
+        function ChangeSliderValue(event, ui) {
+            var selector = $(this).children(".sliderValue");
+
+            selector.val(ui.value);
+        }
+
+        $(document).ready(function() {
+            $(".slider").slider({
+                change: ChangeSliderValue,
+                slide: ChangeSliderValue
+            });
+        });
+    </script>
+
+
+    <div class="slider">
+        @Html.HiddenFor(m => Model, new { @class = "sliderValue" })
+    </div>
+
+
+

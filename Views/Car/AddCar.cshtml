@@ -1,0 +1,20 @@
+﻿@model NapredniObrazec.Models.Car
+
+@{
+    ViewData["Title"] = "ReviewUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+
+    @using (Html.BeginForm("index"))
+    {
+
+        @Html.EditorForModel(ModelExpressionProvider)
+        <br /><input type="submit" value="Next" class="btn btn-primary float-right" />
+    }
+
+    @Html.ValidationSummary()
+
+
+</div>

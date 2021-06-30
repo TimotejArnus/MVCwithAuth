@@ -1,0 +1,17 @@
+﻿
+@model DateTime
+
+<script>
+    $(function () {
+        $(".datepicker").datepicker({
+            dateFormat: "dd/mm/yy",
+
+
+        });
+    });
+
+</script>
+
+<div>
+    @Html.TextBox("", Model.ToShortDateString(), new { @class = "form-control datepicker" })
+</div>

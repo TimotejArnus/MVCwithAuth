@@ -1,0 +1,37 @@
+﻿@model NapredniObrazec.Models.UserWithPassword
+
+@{
+    ViewData["Title"] = "AddUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+    <div>
+        @using (Html.BeginForm("index"))
+        {
+            @Html.LabelFor(u => u.Name)
+            @Html.EditorFor(u => u.Name)
+            @Html.LabelFor(u => u.LastName)
+            @Html.EditorFor(u => u.LastName)
+            @Html.LabelFor(u => u.Email)
+            @Html.EditorFor(u => u.Email)
+            @Html.LabelFor(u => u.Password1)
+            @Html.EditorFor(u => u.Password1)
+            @Html.LabelFor(u => u.Password2)
+            @Html.EditorFor(u => u.Password2)
+
+            <br /><input type="submit" value="Next" class="btn btn-primary" />
+
+            <button class="btn btn-info" type="submit"> LogIn </button>
+            <a class="btn btn-primary" asp-action="GoogleLogin"> Google </a>
+
+        }
+
+        @Html.ValidationSummary()
+
+    </div>
+<div>
+  
+    <a asp-action="Index">Back to List</a>
+</div>

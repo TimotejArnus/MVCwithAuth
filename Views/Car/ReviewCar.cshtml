@@ -1,0 +1,14 @@
+﻿@model NapredniObrazec.Models.Car
+
+@{
+    ViewData["Title"] = "ReviewUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    @Html.DisplayForModel()
+</div>
+<div>
+    @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+    <a asp-action="Index">Back to List</a>
+</div>
